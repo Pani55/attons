@@ -4,6 +4,8 @@ from users.models import User
 
 
 class Command(BaseCommand):
+    """ Command to create a new superuser from command line """
+
     def handle(self, *args, **options):
         user = User.objects.create(email="admin@example.com")
         user.set_password("123666")
