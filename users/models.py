@@ -3,6 +3,8 @@ from django.db import models
 
 
 class User(AbstractUser):
+    """ Model for a user """
+
     username = None
     email = models.EmailField(
         verbose_name="Адрес электронной почты",

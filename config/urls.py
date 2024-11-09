@@ -40,4 +40,5 @@ urlpatterns = [
     path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
     # Add your other URL patterns here...
     path("users/", include("users.urls", namespace="users")),
+    path("sales_network/", include("sales_network.urls", namespace="sales_network")),
 ]

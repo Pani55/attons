@@ -25,10 +25,10 @@ load_dotenv(BASE_DIR / ".env")
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-$kqh-9@#^!^lq8&_x4*=z#cbq7u&+dhfuj1b2luu8d#o6h@#^l"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
 
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework_simplejwt",
     "users",
+    "sales_network",
 ]
 
 MIDDLEWARE = [
@@ -85,10 +86,10 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "ATTONS",
-        "USER": "postgres",
-        "PASSWORD": "Nik123666",
-        "HOST": "localhost",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
     }
 }
 
@@ -115,13 +116,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "ru-ru"
+LANGUAGE_CODE = os.getenv("LANGUAGE_CODE")
 
-TIME_ZONE = "Europe/Moscow"
+TIME_ZONE = os.getenv("TIME_ZONE")
 
-USE_I18N = True
+USE_I18N = os.getenv("USE_I18N") == "true"
 
-USE_TZ = True
+USE_TZ = os.getenv("USE_TZ") == "true"
 
 
 # Static files (CSS, JavaScript, Images)
